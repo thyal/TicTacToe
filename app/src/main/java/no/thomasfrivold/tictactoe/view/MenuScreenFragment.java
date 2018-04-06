@@ -46,6 +46,7 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
     }
 
 
+    //Method that will find out which button was clicked, and then send the user to the right fragment.
     @Override
     public void onClick(View v) {
 
@@ -64,6 +65,12 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
                 break;
             case R.id.btn_twoplayer:
                 Log.d(TAG, "onClick: twoplayer");
+                GameFragment gameFragment = new GameFragment();
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, gameFragment)
+                        .addToBackStack("menu")
+                        .commit();
                 break;
             case R.id.btn_leaderboard:
                 Log.d(TAG, "onClick: leaderboard");
