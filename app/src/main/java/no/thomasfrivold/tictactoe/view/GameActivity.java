@@ -12,19 +12,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = "GameActivity";
 
-    Button btnSinglePlayer;
-    Button btnTwoPlayer;
+    private Button btnSinglePlayer, btnTwoPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        initWidgets();
+    }
+
+    private void initWidgets() {
         btnSinglePlayer = findViewById(R.id.btn_singleplayer);
         btnTwoPlayer = findViewById(R.id.btn_twoplayer);
         btnSinglePlayer.setOnClickListener(this);
         btnTwoPlayer.setOnClickListener(this);
-
     }
 
     @Override
