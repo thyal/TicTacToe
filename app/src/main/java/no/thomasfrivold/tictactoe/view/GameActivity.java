@@ -1,7 +1,9 @@
-package no.thomasfrivold.tictactoe;
+package no.thomasfrivold.tictactoe.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import no.thomasfrivold.tictactoe.R;
 
 public class GameActivity extends AppCompatActivity {
 
