@@ -3,6 +3,8 @@ package no.thomasfrivold.tictactoe.view;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
 import no.thomasfrivold.tictactoe.R;
 
 public class GameActivity extends AppCompatActivity {
@@ -21,6 +23,8 @@ public class GameActivity extends AppCompatActivity {
 
 
     private void loadMainMenu() {
+        Log.d(TAG, "loadMainMenu");
+
         MenuScreenFragment menuScreenFragment = new MenuScreenFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentManager

@@ -44,13 +44,19 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+
         int viewId = v.getId();
 
-        if(viewId == R.id.btn_singleplayer) {
-            Log.d(TAG, "onClick: singleplayer");
+        switch(viewId) {
+            case R.id.btn_singleplayer:
+                Log.d(TAG, "onClick: singleplayer");
+                break;
+            case R.id.btn_twoplayer:
+                Log.d(TAG, "onClick: twoplayer");
+                break;
+            case R.id.btn_leaderboard:
+                Log.d(TAG, "onClick: leaderboard");
         }
-        if(viewId == R.id.btn_twoplayer) {
-            Log.d(TAG, "onClick: twoplayer");
-        }
+
     }
 }
