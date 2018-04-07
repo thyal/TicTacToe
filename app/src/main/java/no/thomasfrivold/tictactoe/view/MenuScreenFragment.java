@@ -74,6 +74,12 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
                 break;
             case R.id.btn_leaderboard:
                 Log.d(TAG, "onClick: leaderboard");
+                LeaderboardFragment leaderboardFragment = new LeaderboardFragment();
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, leaderboardFragment)
+                        .addToBackStack("menu")
+                        .commit();
                 break;
         }
 
