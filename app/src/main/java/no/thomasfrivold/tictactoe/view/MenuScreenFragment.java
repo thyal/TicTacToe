@@ -59,16 +59,20 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.container, singleplayerFragment)
-                        .addToBackStack("menu")
+                        .addToBackStack(null)
                         .commit();
                 break;
             case R.id.btn_twoplayer:
                 Log.d(TAG, "onClick: twoplayer");
+                //Dialog
+                NameInputDialogFragment nameInputDialogFragment = new NameInputDialogFragment();
+                nameInputDialogFragment.setCancelable(false);
+                nameInputDialogFragment.show(getFragmentManager(), "names");
                 GameFragment gameFragment = new GameFragment();
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.container, gameFragment)
-                        .addToBackStack("menu")
+                        .addToBackStack(null)
                         .commit();
                 break;
             case R.id.btn_leaderboard:
@@ -77,7 +81,7 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
                 getFragmentManager()
                         .beginTransaction()
                         .replace(R.id.container, leaderboardFragment)
-                        .addToBackStack("menu")
+                        .addToBackStack(null)
                         .commit();
                 break;
         }
