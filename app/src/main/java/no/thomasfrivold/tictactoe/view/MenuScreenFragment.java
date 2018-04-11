@@ -68,12 +68,6 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
                 NameInputDialogFragment nameInputDialogFragment = new NameInputDialogFragment();
                 nameInputDialogFragment.setCancelable(false);
                 nameInputDialogFragment.show(getFragmentManager(), "names");
-                GameFragment gameFragment = new GameFragment();
-                getFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container, gameFragment)
-                        .addToBackStack(null)
-                        .commit();
                 break;
             case R.id.btn_leaderboard:
                 Log.d(TAG, "onClick: leaderboard");
