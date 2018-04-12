@@ -42,7 +42,11 @@ public class GameFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView txt = getView().findViewById(R.id.txtv_playerOne);
-        txt.setText(playerOne);
+        TextView txtPlayerOne = getView().findViewById(R.id.txtv_playerOne);
+        TextView txtPlayerTwo = getView().findViewById(R.id.txtv_playerTwo);
+
+        txtPlayerOne.setText(playerOne);
+        txtPlayerTwo.setText(playerTwo);
+
     }
 }
