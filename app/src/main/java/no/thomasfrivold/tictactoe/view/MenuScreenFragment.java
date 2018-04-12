@@ -66,7 +66,6 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
                 Log.d(TAG, "onClick: twoplayer");
                 //Dialog
                 NameInputDialogFragment nameInputDialogFragment = new NameInputDialogFragment();
-                nameInputDialogFragment.setCancelable(false);
                 nameInputDialogFragment.show(getFragmentManager(), "names");
                 break;
             case R.id.btn_leaderboard:

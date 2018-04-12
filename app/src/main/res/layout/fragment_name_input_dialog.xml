@@ -13,18 +13,19 @@
        android:hint="Player One"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:layout_marginTop="4dp"
        android:layout_marginLeft="4dp"
        android:layout_marginRight="4dp"
-       android:layout_marginBottom="4dp"/>
+       android:layout_marginBottom="42dp"/>
 
     <EditText
         android:id="@+id/player_two"
-        android:hint="Player Two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="24dp"/>
+        android:hint="Player Two" />
 
 </FrameLayout>
