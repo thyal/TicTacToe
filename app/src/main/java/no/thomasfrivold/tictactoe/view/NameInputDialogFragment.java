@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,10 @@ public class NameInputDialogFragment extends DialogFragment {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        ((GameActivity)getActivity()).doPositiveClick();
+                        Dialog f = (Dialog) dialog;
+                        EditText one = f.findViewById(R.id.player_one);
+                        String playerOne = one.getText().toString();
+                        ((GameActivity)getActivity()).doPositiveClick(playerOne);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
