@@ -44,6 +44,12 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
         btnLeaderboard.setOnClickListener(this);
     }
 
+    private void showDialog() {
+        //Dialog
+        NameInputDialogFragment nameInputDialogFragment = new NameInputDialogFragment();
+        nameInputDialogFragment.show(getFragmentManager(), "names");
+    }
+
 
     //Method that will find out which button was clicked, and then send the user to the right fragment.
     @Override
@@ -64,9 +70,7 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
                 break;
             case R.id.btn_twoplayer:
                 Log.d(TAG, "onClick: twoplayer");
-                //Dialog
-                NameInputDialogFragment nameInputDialogFragment = new NameInputDialogFragment();
-                nameInputDialogFragment.show(getFragmentManager(), "names");
+                showDialog();
                 break;
             case R.id.btn_leaderboard:
                 Log.d(TAG, "onClick: leaderboard");

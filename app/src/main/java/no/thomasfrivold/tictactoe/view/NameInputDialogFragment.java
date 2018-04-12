@@ -33,12 +33,7 @@ public class NameInputDialogFragment extends DialogFragment {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        GameFragment gameFragment = new GameFragment();
-                        getFragmentManager()
-                                .beginTransaction()
-                                .replace(R.id.container, gameFragment)
-                                .addToBackStack(null)
-                                .commit();
+                        ((GameActivity)getActivity()).doPositiveClick();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
