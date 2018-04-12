@@ -34,10 +34,16 @@ public class NameInputDialogFragment extends DialogFragment {
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        //Cast to dialog so that findViewById will be available.
                         Dialog f = (Dialog) dialog;
+
                         EditText one = f.findViewById(R.id.player_one);
+                        EditText two = f.findViewById(R.id.player_two);
+
                         String playerOne = one.getText().toString();
-                        ((GameActivity)getActivity()).doPositiveClick(playerOne);
+                        String playerTwo = two.getText().toString();
+
+                        ((GameActivity)getActivity()).doPositiveClick(playerOne, playerTwo);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

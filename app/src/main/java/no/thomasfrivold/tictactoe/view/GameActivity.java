@@ -33,9 +33,21 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
     }
 
-    void doPositiveClick(String playerOne) {
-        Log.d(TAG, playerOne);
-    }
+    void doPositiveClick(String playerOne, String playerTwo) {
+        //Log.d(TAG, playerOne + " " + playerTwo);
+        Bundle bundle = new Bundle();
+        bundle.putString("playerOne", playerOne);
+        bundle.putString("playerTwo", playerTwo);
+
+        GameFragment gameFragment = new GameFragment();
+        gameFragment.setArguments(bundle);
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.container, gameFragment, null)
+                .addToBackStack(null)
+                .commit();
+}
 
     void doNegativeClick() {
         Log.d(TAG, "DIALOG NOT OK");
