@@ -85,49 +85,15 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         int viewId = v.getId();
 
-        switch (viewId) {
-            case R.id.img_btn_01:
-                makeMove(img_btn_01);
-                break;
-            case R.id.img_btn_02:
-                makeMove(img_btn_02);
-                break;
-            case R.id.img_btn_03:
-                makeMove(img_btn_03);
-                break;
-            case R.id.img_btn_11:
-                makeMove(img_btn_11);
-                break;
-            case R.id.img_btn_12:
-                makeMove(img_btn_12);
-                break;
-            case R.id.img_btn_13:
-                makeMove(img_btn_13);
-                break;
-            case R.id.img_btn_21:
-                makeMove(img_btn_21);
-                break;
-            case R.id.img_btn_22:
-                makeMove(img_btn_22);
-                break;
-            case R.id.img_btn_23:
-                makeMove(img_btn_23);
-                break;
-        }
-    }
-
-    void makeMove(ImageButton btn) {
-        //TODO check which player is playing
         for(ImageButton img_btn : img_btns) {
-            if(btn == img_btn) {
-                img_btn.setImageResource(image);
-                //img_btn.setEnabled(false);
-                nextTurn();
+            if(viewId == img_btn.getId()) {
+                makeMove(img_btn);
             }
         }
     }
 
-    void nextTurn() {
+    void makeMove(ImageButton btn) {
+
         if(mCurrentPlayer == 0) {
             image = R.drawable.cross;
             mCurrentPlayer = 1;
@@ -135,5 +101,13 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             image = R.drawable.circle;
             mCurrentPlayer = 0;
         }
+
+        for(ImageButton img_btn : img_btns) {
+            if(btn == img_btn) {
+                img_btn.setImageResource(image);
+                img_btn.setEnabled(false);
+            }
+        }
     }
+
 }
