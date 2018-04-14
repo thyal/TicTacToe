@@ -39,6 +39,7 @@ public class GameFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_game, container, false);
     }
 
+    //getView() is only available after onCreateView() method has run.
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -47,6 +48,5 @@ public class GameFragment extends Fragment {
 
         txtPlayerOne.setText(playerOne);
         txtPlayerTwo.setText(playerTwo);
-
     }
 }

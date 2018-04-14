@@ -49,8 +49,4 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
 }
 
-    void doNegativeClick() {
-        Log.d(TAG, "DIALOG NOT OK");
-    }
-
 }
