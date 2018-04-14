@@ -28,6 +28,8 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                         img_btn_11,img_btn_12,img_btn_13,
                         img_btn_21,img_btn_22,img_btn_23;
     private ImageButton[] img_btns;
+    private int mCurrentPlayer;
+    private int image;
 
     public GameFragment() {
         // Required empty public constructor
@@ -59,6 +61,8 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initWidgets(View v) {
+        mCurrentPlayer = 0;
+        image = R.drawable.cross;
         img_btn_01 = v.findViewById(R.id.img_btn_01);
         img_btn_02 = v.findViewById(R.id.img_btn_02);
         img_btn_03 = v.findViewById(R.id.img_btn_03);
@@ -114,11 +118,22 @@ public class GameFragment extends Fragment implements View.OnClickListener {
 
     void makeMove(ImageButton btn) {
         //TODO check which player is playing
-        int image = R.drawable.cross;
         for(ImageButton img_btn : img_btns) {
             if(btn == img_btn) {
                 img_btn.setImageResource(image);
+                //img_btn.setEnabled(false);
+                nextTurn();
             }
+        }
+    }
+
+    void nextTurn() {
+        if(mCurrentPlayer == 0) {
+            image = R.drawable.cross;
+            mCurrentPlayer = 1;
+        } else {
+            image = R.drawable.circle;
+            mCurrentPlayer = 0;
         }
     }
 }

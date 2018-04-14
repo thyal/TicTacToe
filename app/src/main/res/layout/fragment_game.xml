@@ -23,12 +23,14 @@
 
             <ImageButton
                 android:id="@+id/img_btn_01"
+                android:scaleType="fitCenter"
                 android:background="@drawable/blank_cell"
                 android:layout_height="96dp"
                 android:layout_width="96dp"/>
 
             <ImageButton
                 android:id="@+id/img_btn_02"
+                android:scaleType="fitCenter"
                 android:background="@drawable/blank_cell"
                 android:layout_marginLeft="8dp"
                 android:layout_height="96dp"
@@ -36,6 +38,7 @@
 
             <ImageButton
                 android:id="@+id/img_btn_03"
+                android:scaleType="fitCenter"
                 android:background="@drawable/blank_cell"
                 android:layout_marginLeft="8dp"
                 android:layout_height="96dp"
@@ -47,12 +50,14 @@
 
             <ImageButton
                 android:id="@+id/img_btn_11"
+                android:scaleType="fitCenter"
                 android:background="@drawable/blank_cell"
                 android:layout_height="92dp"
                 android:layout_width="96dp"/>
 
             <ImageButton
                 android:id="@+id/img_btn_12"
+                android:scaleType="fitCenter"
                 android:background="@drawable/blank_cell"
                 android:layout_marginLeft="8dp"
                 android:layout_height="92dp"
@@ -60,6 +65,7 @@
 
             <ImageButton
                 android:id="@+id/img_btn_13"
+                android:scaleType="fitCenter"
                 android:background="@drawable/blank_cell"
                 android:layout_marginLeft="8dp"
                 android:layout_height="92dp"
@@ -71,12 +77,14 @@
 
             <ImageButton
                 android:id="@+id/img_btn_21"
+                android:scaleType="fitCenter"
                 android:background="@drawable/blank_cell"
                 android:layout_height="92dp"
                 android:layout_width="96dp"/>
 
             <ImageButton
                 android:id="@+id/img_btn_22"
+                android:scaleType="fitCenter"
                 android:background="@drawable/blank_cell"
                 android:layout_marginLeft="8dp"
                 android:layout_height="92dp"
@@ -84,6 +92,7 @@
 
             <ImageButton
                 android:id="@+id/img_btn_23"
+                android:scaleType="fitCenter"
                 android:background="@drawable/blank_cell"
                 android:layout_marginLeft="8dp"
                 android:layout_height="92dp"
