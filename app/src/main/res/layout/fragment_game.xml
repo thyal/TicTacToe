@@ -12,32 +12,66 @@
     <TableLayout
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:background="@drawable/grid">
-        <TableRow>
-            <ImageButton
-                android:src="@drawable/ic_android_black_24dp"/>
-            <ImageButton
-                android:src="@drawable/ic_android_black_24dp"/>
-            <ImageButton
-                android:src="@drawable/ic_android_black_24dp"/>
-        </TableRow>
+        android:background="@drawable/grid"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow>
-            <ImageButton
-                android:src="@drawable/ic_android_black_24dp"/>
-            <ImageButton
-                android:src="@drawable/ic_android_black_24dp"/>
-            <ImageButton
-                android:src="@drawable/ic_android_black_24dp"/>
+
+            <ImageButton android:src="@drawable/blank_square"
+                android:layout_height="96dp"
+                android:layout_width="96dp"/>
+
+            <ImageButton android:src="@drawable/blank_square"
+                android:layout_marginLeft="8dp"
+                android:layout_height="96dp"
+                android:layout_width="92dp"/>
+
+            <ImageButton android:src="@drawable/blank_square"
+                android:layout_marginLeft="8dp"
+                android:layout_height="96dp"
+                android:layout_width="92dp"/>
         </TableRow>
 
-        <TableRow>
+        <TableRow
+            android:layout_marginTop="8dp">
+
+            <ImageButton android:src="@drawable/blank_square"
+                android:layout_height="92dp"
+                android:layout_width="96dp"/>
+
+            <ImageButton android:src="@drawable/blank_square"
+                android:layout_marginLeft="8dp"
+                android:layout_height="92dp"
+                android:layout_width="92dp"/>
+
+            <ImageButton android:src="@drawable/blank_square"
+                android:layout_marginLeft="8dp"
+                android:layout_height="92dp"
+                android:layout_width="92dp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_marginTop="8dp">
+
             <ImageButton
-                android:src="@drawable/ic_android_black_24dp"/>
+                android:src="@drawable/blank_square"
+                android:layout_height="92dp"
+                android:layout_width="96dp"/>
+
             <ImageButton
-                android:src="@drawable/ic_android_black_24dp"/>
+                android:src="@drawable/blank_square"
+                android:layout_marginLeft="8dp"
+                android:layout_height="92dp"
+                android:layout_width="92dp"/>
+
             <ImageButton
-                android:src="@drawable/ic_android_black_24dp"/>
+                android:src="@drawable/blank_square"
+                android:layout_marginLeft="8dp"
+                android:layout_height="92dp"
+                android:layout_width="92dp"/>
         </TableRow>
     </TableLayout>
 
