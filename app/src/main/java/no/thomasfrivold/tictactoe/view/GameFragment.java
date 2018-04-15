@@ -107,9 +107,6 @@ public class GameFragment extends Fragment implements View.OnClickListener {
 
     void makeMove(ImageButton btn) {
 
-        GameController gameController = new GameController();
-        int [] arr = {4,3,5};
-        gameController.checkWin(arr);
         if(mCurrentPlayer == 0) {
             image = R.drawable.cross;
             mCurrentPlayer = 1;
