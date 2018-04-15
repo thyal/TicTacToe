@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="primaryText" parent="AppTheme">
+        <item name="android:fontFamily">@font/kg_ten_thousand_reasons</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
 </resources>
