@@ -15,6 +15,7 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import no.thomasfrivold.tictactoe.R;
+import no.thomasfrivold.tictactoe.logic.GameController;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,7 +25,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     private String playerOne;
     private String playerTwo;
 
-    private ImageButton img_btn_01,img_btn_02,img_btn_03,
+    private ImageButton reset_board,img_btn_01,img_btn_02,img_btn_03,
                         img_btn_11,img_btn_12,img_btn_13,
                         img_btn_21,img_btn_22,img_btn_23;
     private ImageButton[] img_btns;
@@ -63,6 +64,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     private void initWidgets(View v) {
         mCurrentPlayer = 0;
         image = R.drawable.cross;
+        reset_board = v.findViewById(R.id.reset_board);
         img_btn_01 = v.findViewById(R.id.img_btn_01);
         img_btn_02 = v.findViewById(R.id.img_btn_02);
         img_btn_03 = v.findViewById(R.id.img_btn_03);
@@ -76,6 +78,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                 {img_btn_01, img_btn_02, img_btn_03, img_btn_11,img_btn_12,
                 img_btn_13,img_btn_21,img_btn_22,img_btn_23};
 
+        reset_board.setOnClickListener(this);
         for(ImageButton img_btn : img_btns) {
             img_btn.setOnClickListener(this);
         }
@@ -90,10 +93,23 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                 makeMove(img_btn);
             }
         }
+        if(viewId == reset_board.getId()) {
+            resetBoard();
+        }
+    }
+
+    private void resetBoard() {
+        for(ImageButton img_btn : img_btns) {
+            img_btn.setImageResource(R.drawable.blank_cell);
+            img_btn.setEnabled(true);
+        }
     }
 
     void makeMove(ImageButton btn) {
 
+        GameController gameController = new GameController();
+        int [] arr = {4,3,5};
+        gameController.checkWin(arr);
         if(mCurrentPlayer == 0) {
             image = R.drawable.cross;
             mCurrentPlayer = 1;
