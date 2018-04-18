@@ -9,6 +9,7 @@
     android:background="@drawable/blackboard_bg_xxhdpi"
     tools:context=".view.GameFragment">
 
+
     <TextView
         android:id="@+id/txtv_playerOne"
         style="@style/primaryText"
