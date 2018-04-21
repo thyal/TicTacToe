@@ -30,7 +30,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                         img_btn_11,img_btn_12,img_btn_13,
                         img_btn_21,img_btn_22,img_btn_23;
     private ImageButton[] img_btns;
-    private CellSymbol mSymbol;
+    private CellSymbol mStartingPlayer;
     private int image;
 
     public GameFragment() {
@@ -41,7 +41,9 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        gameController = new GameController();
+
+        mStartingPlayer = CellSymbol.CROSS;
+        gameController = new GameController(img_btns, mStartingPlayer);
         String playerOneName = this.getArguments().getString("playerOne");
         String playerTwoName = this.getArguments().getString("playerTwo");
 
@@ -99,22 +101,16 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             }
         }
         if(viewId == reset_board.getId()) {
-            resetBoard();
+            gameController.resetBoard();
         }
     }
 
     private void resetBoard() {
-        for(ImageButton img_btn : img_btns) {
-                img_btn.setImageResource(R.drawable.blank_cell);
-                img_btn.setEnabled(true);
-        }
+
     }
 
     void makeMove(ImageButton img_btn) {
-
-        img_btn.setImageResource(image);
-        img_btn.setEnabled(false);
-
+        gameController.makeMove(img_btn);
     }
 
 }
