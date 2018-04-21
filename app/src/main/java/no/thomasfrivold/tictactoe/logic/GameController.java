@@ -7,6 +7,8 @@ import no.thomasfrivold.tictactoe.R;
 public class GameController {
 
     /*
+    Controller class. This class handles all of the game logic.
+
      The gameboard is a 3x3 grid
 
       0 | 1 | 2
@@ -17,15 +19,13 @@ public class GameController {
 
     // will use this array of boolean values to keep track of the board. Sets true if someone has
     // placed a mark on the given spot.
-    private boolean[][] boardCellsFilled;
     private int movecounter;
     private int image;
-    private ImageButton [] img_btns;
+    private ImageButton [][] mImageButtons;
     private CellSymbol mCurrentPlayer;
 
-    public GameController(ImageButton[] img_btns, CellSymbol mCurrentPlayer) {
-        this.boardCellsFilled = new boolean[3][3];
-        this.img_btns = img_btns;
+    public GameController(ImageButton[][] img_btns, CellSymbol mCurrentPlayer) {
+        this.mImageButtons = img_btns;
         this.mCurrentPlayer = mCurrentPlayer;
     }
 
@@ -45,7 +45,14 @@ public class GameController {
     //Short if statement, just check which player is the current one,
     //and changes the variable to the other.
     private void changePlayer() {
-        mCurrentPlayer = (mCurrentPlayer == CellSymbol.CROSS) ? CellSymbol.CIRCLE : CellSymbol.CROSS;
+        if(!boardisFilled()) {
+            mCurrentPlayer = (mCurrentPlayer == CellSymbol.CROSS) ? CellSymbol.CIRCLE : CellSymbol.CROSS;
+        }
+
+    }
+
+    private boolean boardisFilled() {
+        return false;
     }
 
 }
