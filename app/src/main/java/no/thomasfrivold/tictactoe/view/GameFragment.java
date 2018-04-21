@@ -44,7 +44,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
 
         mStartingPlayer = CellSymbol.CROSS;
-        gameController = new GameController(mImageButtons, mStartingPlayer);
+
         String playerOneName = this.getArguments().getString("playerOne");
         String playerTwoName = this.getArguments().getString("playerTwo");
 
@@ -87,6 +87,8 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                         {img_btn_21,img_btn_22,img_btn_23}
                 };
 
+        gameController = new GameController(mImageButtons, mStartingPlayer);
+
         //On Click Listeners
         reset_board.setOnClickListener(this);
         for(ImageButton img_btns[] : mImageButtons) {
@@ -104,7 +106,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         for(ImageButton img_btns[] : mImageButtons) {
             for(ImageButton img_btn : img_btns) {
                 if(viewId == img_btn.getId()) {
-                    makeMove(img_btn);
+                    gameController.makeMove(img_btn);
                 }
             }
 
@@ -123,10 +125,6 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             }
 
         }
-    }
-
-    void makeMove(ImageButton img_btn) {
-        gameController.makeMove(img_btn);
     }
 
 }

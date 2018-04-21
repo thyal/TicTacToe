@@ -40,6 +40,7 @@ public class GameController {
         img_btn.setImageResource(image);
         img_btn.setTag(mCurrentPlayer);
         img_btn.setEnabled(false);
+        System.out.println(gameIsWonOnRow(getColumn(img_btn)));
         changePlayer();
     }
 
@@ -53,7 +54,7 @@ public class GameController {
     }
 
     private boolean boardisFilled() {
-        //Get the total length of cells. since it always will be an equal amount of columns and rows,
+        //Get the total amount of cells. since it always will be an equal amount of columns and rows,
         //we can just multiply the two. In a standard game with 3x3 cells, this will equal to 9.
 
         int boardLength = mImageButtons.length * mImageButtons[0].length;
@@ -69,6 +70,60 @@ public class GameController {
             }
         }
         return boardLength == counter;
+    }
+
+    private CellSymbol checkIfGameIsWon() {
+        if(boardisFilled()) {
+            return CellSymbol.BLANK;
+        }
+
+        return null;
+    }
+
+    private boolean gameIsWonOnRow(int col) {
+        int symbolsInARow = 0;
+        for(int i = 0; i < mImageButtons.length; i++) {
+                if(mImageButtons[i][col].getTag() == mCurrentPlayer) {
+                    symbolsInARow++;
+                }
+        }
+        boolean gameWon = mImageButtons.length == symbolsInARow;
+        return gameWon;
+    }
+
+    private boolean gameIsWonOnCol(int row) {
+        int symbolsInACol = 0;
+        for(int i = 0; i < mImageButtons[0].length; i++) {
+            if(mImageButtons[row][i].getTag() == mCurrentPlayer) {
+                symbolsInACol++;
+            }
+        }
+        boolean gameWon = mImageButtons.length == symbolsInACol;
+        return gameWon;
+    }
+
+    public int getRow(ImageButton img_btn) {
+        int row = -1;
+        for(int i = 0; i < mImageButtons.length; i++) {
+            for(int j = 0; j < mImageButtons.length; j++) {
+                if(img_btn.getId() == mImageButtons[i][j].getId()) {
+                    row = i;
+                }
+            }
+        }
+        return row;
+    }
+
+    public int getColumn(ImageButton img_btn) {
+        int col = -1;
+        for(int i = 0; i < mImageButtons.length; i++) {
+            for(int j = 0; j < mImageButtons.length; j++) {
+                if(img_btn.getId() == mImageButtons[i][j].getId()) {
+                    col = j;
+                }
+            }
+        }
+        return col;
     }
 
 }
