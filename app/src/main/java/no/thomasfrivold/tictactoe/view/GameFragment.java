@@ -92,6 +92,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         for(ImageButton img_btns[] : mImageButtons) {
             for(ImageButton img_btn : img_btns) {
                 img_btn.setOnClickListener(this);
+                img_btn.setTag(CellSymbol.BLANK);
             }
         }
     }

@@ -19,7 +19,7 @@ public class GameController {
 
     // will use this array of boolean values to keep track of the board. Sets true if someone has
     // placed a mark on the given spot.
-    private int movecounter;
+    private int moveCounter;
     private int image;
     private ImageButton [][] mImageButtons;
     private CellSymbol mCurrentPlayer;
@@ -30,6 +30,7 @@ public class GameController {
     }
 
     public void makeMove(ImageButton img_btn) {
+        moveCounter++;
         if(mCurrentPlayer == CellSymbol.CROSS) {
             image = R.drawable.cross;
         } else {
@@ -52,7 +53,22 @@ public class GameController {
     }
 
     private boolean boardisFilled() {
-        return false;
+        //Get the total length of cells. since it always will be an equal amount of columns and rows,
+        //we can just multiply the two. In a standard game with 3x3 cells, this will equal to 9.
+
+        int boardLength = mImageButtons.length * mImageButtons[0].length;
+        int counter = 0;
+
+        //I could also just check if boardLength is equal to moveCounter, but this is safer. Here
+        //I am sure that it will only count if there actually is a image (move) made on the cell.
+        for(ImageButton img_btns[] : mImageButtons) {
+            for(ImageButton img_btn : img_btns) {
+                if(img_btn.getTag() != CellSymbol.BLANK) {
+                    counter++;
+                }
+            }
+        }
+        return boardLength == counter;
     }
 
 }
