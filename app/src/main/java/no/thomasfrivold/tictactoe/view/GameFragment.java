@@ -101,12 +101,16 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             }
         }
         if(viewId == reset_board.getId()) {
-            gameController.resetBoard();
+            resetBoard();
         }
     }
 
     private void resetBoard() {
-
+        for(ImageButton img_btn : img_btns) {
+            img_btn.setImageResource(R.drawable.blank_cell);
+            img_btn.setTag(CellSymbol.BLANK);
+            img_btn.setEnabled(true);
+        }
     }
 
     void makeMove(ImageButton img_btn) {

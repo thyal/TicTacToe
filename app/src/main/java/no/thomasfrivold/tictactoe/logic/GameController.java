@@ -37,14 +37,15 @@ public class GameController {
         }
 
         img_btn.setImageResource(image);
+        img_btn.setTag(mCurrentPlayer);
         img_btn.setEnabled(false);
+        changePlayer();
     }
 
-    public void resetBoard() {
-        for(ImageButton img_btn : img_btns) {
-            img_btn.setImageResource(R.drawable.blank_cell);
-            img_btn.setEnabled(true);
-            img_btn.setTag(CellSymbol.BLANK);
-        }
+    //Short if statement, just check which player is the current one,
+    //and changes the variable to the other.
+    private void changePlayer() {
+        mCurrentPlayer = (mCurrentPlayer == CellSymbol.CROSS) ? CellSymbol.CIRCLE : CellSymbol.CROSS;
     }
+
 }
