@@ -1,6 +1,7 @@
 package no.thomasfrivold.tictactoe.logic;
 
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import no.thomasfrivold.tictactoe.R;
 
@@ -40,7 +41,7 @@ public class GameController {
         img_btn.setImageResource(image);
         img_btn.setTag(mCurrentPlayer);
         img_btn.setEnabled(false);
-        System.out.println(gameIsWonOnRow(getColumn(img_btn)));
+        checkIfGameIsWon(img_btn);
         changePlayer();
     }
 
@@ -50,7 +51,6 @@ public class GameController {
         if(!boardisFilled()) {
             mCurrentPlayer = (mCurrentPlayer == CellSymbol.CROSS) ? CellSymbol.CIRCLE : CellSymbol.CROSS;
         }
-
     }
 
     private boolean boardisFilled() {
@@ -72,9 +72,22 @@ public class GameController {
         return boardLength == counter;
     }
 
-    private CellSymbol checkIfGameIsWon() {
+    private CellSymbol checkIfGameIsWon(ImageButton img_btn) {
         if(boardisFilled()) {
+            System.out.println("DRAW");
             return CellSymbol.BLANK;
+        }
+        int col,row;
+        col = getColumn(img_btn);
+        row = getRow(img_btn);
+
+        if(gameIsWonOnRow(col)) {
+            System.out.println(mCurrentPlayer + " wins. Three in a row");
+            return mCurrentPlayer;
+        }
+        if(gameIsWonOnCol(row)) {
+            System.out.println(mCurrentPlayer + " wins. Three in a col");
+            return mCurrentPlayer;
         }
 
         return null;
