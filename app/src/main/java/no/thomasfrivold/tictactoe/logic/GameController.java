@@ -90,6 +90,19 @@ public class GameController {
             return mCurrentPlayer;
         }
 
+        if(col == row) {
+            if(gameIsWonDiagonally()) {
+                System.out.println(mCurrentPlayer + " wins. Three diagonally");
+                return mCurrentPlayer;
+            }
+        }
+
+        if(col + row == mImageButtons.length -1) {
+            if(gameIsWonAntiDiagonally()) {
+                System.out.println(mCurrentPlayer + " wins. Thee ANTI");
+            }
+        }
+
         return null;
     }
 
@@ -113,6 +126,26 @@ public class GameController {
         }
         boolean gameWon = mImageButtons.length == symbolsInACol;
         return gameWon;
+    }
+
+    private boolean gameIsWonDiagonally() {
+        int symbolsInADig = 0;
+        for(int i = 0; i < mImageButtons.length; i++) {
+            if(mImageButtons[i][i].getTag() == mCurrentPlayer) {
+                symbolsInADig++;
+            }
+        }
+        return symbolsInADig == mImageButtons.length;
+    }
+
+    private boolean gameIsWonAntiDiagonally() {
+        int symbolsInAnti = 0;
+        for(int i = 0; i < mImageButtons.length; i++) {
+            if(mImageButtons[i][mImageButtons.length - i - 1].getTag() == mCurrentPlayer) {
+                symbolsInAnti++;
+            }
+        }
+        return symbolsInAnti == mImageButtons.length;
     }
 
     public int getRow(ImageButton img_btn) {
