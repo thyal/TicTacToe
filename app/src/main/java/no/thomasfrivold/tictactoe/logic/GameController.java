@@ -16,9 +16,7 @@ public class GameController {
       6 | 7 | 8
 
      */
-
-    // will use this array of boolean values to keep track of the board. Sets true if someone has
-    // placed a mark on the given spot.
+    
     private int moveCounter;
     private int image;
     private ImageButton [][] mImageButtons;
@@ -29,7 +27,7 @@ public class GameController {
         this.mCurrentPlayer = mCurrentPlayer;
     }
 
-    public void makeMove(ImageButton img_btn) {
+    public CellSymbol makeMove(ImageButton img_btn) {
         moveCounter++;
         if(mCurrentPlayer == CellSymbol.CROSS) {
             image = R.drawable.cross;
@@ -40,16 +38,29 @@ public class GameController {
         img_btn.setImageResource(image);
         img_btn.setTag(mCurrentPlayer);
         img_btn.setEnabled(false);
-        checkIfGameIsWon(img_btn);
-        changePlayer();
+
+        /*
+        Return current player (symbol) if the game has been won.
+        If there is no winner, but the board is full, it means it's a draw. In that case. Return
+        the blank symbol.
+        If neither of those conditions hit, it means the game is still going. So, change
+        player, and return null.
+        */
+        if(gameIsWon(img_btn)) {
+            return mCurrentPlayer;
+        }
+        else if(boardisFilled()) {
+            return CellSymbol.BLANK;
+        } else {
+            changePlayer();
+        }
+        return null;
     }
 
     //Short if statement, just check which player is the current one,
     //and changes the variable to the other.
     private void changePlayer() {
-        if(!boardisFilled()) {
             mCurrentPlayer = (mCurrentPlayer == CellSymbol.CROSS) ? CellSymbol.CIRCLE : CellSymbol.CROSS;
-        }
     }
 
     private boolean boardisFilled() {
@@ -71,38 +82,28 @@ public class GameController {
         return boardLength == counter;
     }
 
-    private CellSymbol checkIfGameIsWon(ImageButton img_btn) {
-        if(boardisFilled()) {
-            System.out.println("DRAW");
-            return CellSymbol.BLANK;
-        }
+    private boolean gameIsWon(ImageButton img_btn) {
         int col,row;
         col = getColumn(img_btn);
         row = getRow(img_btn);
 
         if(gameIsWonOnRow(col)) {
-            System.out.println(mCurrentPlayer + " wins. Three in a row");
-            return mCurrentPlayer;
+            return true;
         }
         if(gameIsWonOnCol(row)) {
-            System.out.println(mCurrentPlayer + " wins. Three in a col");
-            return mCurrentPlayer;
+            return true;
         }
-
         if(col == row) {
             if(gameIsWonDiagonally()) {
-                System.out.println(mCurrentPlayer + " wins. Three diagonally");
-                return mCurrentPlayer;
+                return true;
             }
         }
-
         if(col + row == mImageButtons.length -1) {
             if(gameIsWonAntiDiagonally()) {
-                System.out.println(mCurrentPlayer + " wins. Thee ANTI");
+                return true;
             }
         }
-
-        return null;
+        return false;
     }
 
     private boolean gameIsWonOnRow(int col) {
