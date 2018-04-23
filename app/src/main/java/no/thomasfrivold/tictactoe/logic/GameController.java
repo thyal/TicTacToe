@@ -1,7 +1,6 @@
 package no.thomasfrivold.tictactoe.logic;
 
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import no.thomasfrivold.tictactoe.R;
 
@@ -113,40 +112,40 @@ public class GameController {
                     symbolsInARow++;
                 }
         }
-        boolean gameWon = mImageButtons.length == symbolsInARow;
-        return gameWon;
+        return mImageButtons.length == symbolsInARow;
     }
 
     private boolean gameIsWonOnCol(int row) {
-        int symbolsInACol = 0;
+        int symbolsInARow = 0;
         for(int i = 0; i < mImageButtons[0].length; i++) {
             if(mImageButtons[row][i].getTag() == mCurrentPlayer) {
-                symbolsInACol++;
+                symbolsInARow++;
             }
         }
-        boolean gameWon = mImageButtons.length == symbolsInACol;
-        return gameWon;
+        return mImageButtons.length == symbolsInARow;
     }
 
     private boolean gameIsWonDiagonally() {
-        int symbolsInADig = 0;
+        int symbolsInARow = 0;
         for(int i = 0; i < mImageButtons.length; i++) {
             if(mImageButtons[i][i].getTag() == mCurrentPlayer) {
-                symbolsInADig++;
+                symbolsInARow++;
             }
         }
-        return symbolsInADig == mImageButtons.length;
+        return symbolsInARow == mImageButtons.length;
     }
 
     private boolean gameIsWonAntiDiagonally() {
-        int symbolsInAnti = 0;
+        int symbolsInARow = 0;
         for(int i = 0; i < mImageButtons.length; i++) {
             if(mImageButtons[i][mImageButtons.length - i - 1].getTag() == mCurrentPlayer) {
-                symbolsInAnti++;
+                symbolsInARow++;
             }
         }
-        return symbolsInAnti == mImageButtons.length;
+        return symbolsInARow == mImageButtons.length;
     }
+
+    //Methods for getting the row and column of the button pressed.
 
     public int getRow(ImageButton img_btn) {
         int row = -1;
