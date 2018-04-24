@@ -21,10 +21,14 @@ public class GameController {
     private int image;
     private ImageButton [][] mImageButtons;
     private CellSymbol mCurrentPlayer;
+    private boolean isSinglePlayer;
+    private boolean gameIsOver;
 
-    public GameController(ImageButton[][] img_btns, CellSymbol mCurrentPlayer) {
+    public GameController(ImageButton[][] img_btns, CellSymbol mCurrentPlayer, boolean isSinglePlayer) {
         this.mImageButtons = img_btns;
         this.mCurrentPlayer = mCurrentPlayer;
+        this.isSinglePlayer = isSinglePlayer;
+        this.gameIsOver = false;
     }
 
     public CellSymbol makeMove(ImageButton img_btn) {
@@ -88,18 +92,22 @@ public class GameController {
         row = getRow(img_btn);
 
         if(gameIsWonOnRow(col)) {
+            gameIsOver = true;
             return true;
         }
         if(gameIsWonOnCol(row)) {
+            gameIsOver = true;
             return true;
         }
         if(col == row) {
             if(gameIsWonDiagonally()) {
+                gameIsOver = true;
                 return true;
             }
         }
         if(col + row == mImageButtons.length -1) {
             if(gameIsWonAntiDiagonally()) {
+                gameIsOver = true;
                 return true;
             }
         }
@@ -172,8 +180,22 @@ public class GameController {
         return col;
     }
 
+    public void resetBoard() {
+        for(ImageButton img_btns[] : mImageButtons) {
+            for(ImageButton img_btn : img_btns) {
+                img_btn.setImageResource(R.drawable.blank_cell);
+                img_btn.setTag(CellSymbol.BLANK);
+                img_btn.setEnabled(true);
+            }
+        }
+    }
+
     public ImageButton[][] getmImageButtons() {
         return mImageButtons;
+    }
+
+    public boolean isGameOver() {
+        return gameIsOver;
     }
 
 }

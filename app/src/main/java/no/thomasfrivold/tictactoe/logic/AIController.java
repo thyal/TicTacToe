@@ -7,32 +7,34 @@ import java.util.Random;
 public class AIController {
     private GameController gameController;
     private ImageButton [][] mImageButtons;
+    private int difficulty;
     private Random random;
 
-    public AIController(GameController gameController) {
+    public AIController(GameController gameController, int difficulty) {
         this.gameController = gameController;
         this.mImageButtons = gameController.getmImageButtons();
+        this.difficulty = difficulty;
     }
 
-    public boolean makeEasyMove() {
+    public void makeEasyMove() {
         random = new Random();
 
-        int row = random.nextInt(2);
-        int col = random.nextInt(2);
+        int row = random.nextInt(3);
+        int col = random.nextInt(3);
 
-        return makeMove(row,col);
+        System.out.println(row + " " + col);
+        if(mImageButtons[row][col].isClickable()) {
+            makeMove(row,col);
+        } else {
+            makeEasyMove();
+        }
     }
 
     private boolean makeMove(int row, int col) {
-        for(int i = 0; i < mImageButtons.length; i++) {
-            for(int j = 0; j < mImageButtons[i].length; j++) {
-                if(mImageButtons[i][j] == mImageButtons[row][col]) {
-                    if(mImageButtons[row][col].isClickable()) {
-                        gameController.makeMove(mImageButtons[row][col]);
-                        return true;
-                    }
-                }
-            }
+
+        if(mImageButtons[row][col].isClickable()) {
+            gameController.makeMove(mImageButtons[row][col]);
+            return true;
         }
         return false;
     }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import no.thomasfrivold.tictactoe.R;
 import no.thomasfrivold.tictactoe.data.Player;
+import no.thomasfrivold.tictactoe.logic.AIController;
 import no.thomasfrivold.tictactoe.logic.CellSymbol;
 import no.thomasfrivold.tictactoe.logic.GameController;
 
@@ -27,6 +28,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     private Player playerOne;
     private Player playerTwo;
     private GameController gameController;
+    private AIController aiController;
 
     private ImageButton reset_board,img_btn_01,img_btn_02,img_btn_03,
                         img_btn_11,img_btn_12,img_btn_13,
@@ -35,6 +37,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
 
     private CellSymbol mStartingPlayer;
     private int image;
+    private boolean isSinglePlayer;
 
     public GameFragment() {
         // Required empty public constructor
@@ -49,6 +52,12 @@ public class GameFragment extends Fragment implements View.OnClickListener {
 
         String playerOneName = this.getArguments().getString("playerOne");
         String playerTwoName = this.getArguments().getString("playerTwo");
+
+        if(playerTwoName.equals("TTTBot")) {
+            this.isSinglePlayer = true;
+        } else {
+            this.isSinglePlayer = false;
+        }
 
         playerOne = new Player(playerOneName, 0);
         playerTwo = new Player(playerTwoName, 0);
@@ -89,8 +98,11 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                         {img_btn_21,img_btn_22,img_btn_23}
                 };
 
-        gameController = new GameController(mImageButtons, mStartingPlayer);
-
+        gameController = new GameController(mImageButtons, mStartingPlayer, isSinglePlayer);
+        //If the game is singleplayer initialize AI.
+        if(isSinglePlayer) {
+            aiController = new AIController(gameController,1);
+        }
         //On Click Listeners
         reset_board.setOnClickListener(this);
         for(ImageButton img_btns[] : mImageButtons) {
@@ -109,12 +121,15 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             for(ImageButton img_btn : img_btns) {
                 if(viewId == img_btn.getId()) {
                     makeMove(img_btn);
+                    if(isSinglePlayer) {
+                        makeAiMove();
+                    }
                 }
             }
 
         }
         if(viewId == reset_board.getId()) {
-            resetBoard();
+            gameController.resetBoard();
         }
     }
 
@@ -136,15 +151,8 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void resetBoard() {
-        for(ImageButton img_btns[] : mImageButtons) {
-            for(ImageButton img_btn : img_btns) {
-                img_btn.setImageResource(R.drawable.blank_cell);
-                img_btn.setTag(CellSymbol.BLANK);
-                img_btn.setEnabled(true);
-            }
-
-        }
+    public void makeAiMove() {
+        aiController.makeEasyMove();
     }
 
 }
