@@ -16,7 +16,7 @@ public class GameController {
       6 | 7 | 8
 
      */
-    
+
     private int moveCounter;
     private int image;
     private ImageButton [][] mImageButtons;
@@ -57,7 +57,7 @@ public class GameController {
         return null;
     }
 
-    //Short if statement, just check which player is the current one,
+    //Shorthand if statement, just check which player is the current one,
     //and changes the variable to the other.
     private void changePlayer() {
             mCurrentPlayer = (mCurrentPlayer == CellSymbol.CROSS) ? CellSymbol.CIRCLE : CellSymbol.CROSS;
@@ -148,7 +148,7 @@ public class GameController {
 
     //Methods for getting the row and column of the button pressed.
 
-    public int getRow(ImageButton img_btn) {
+    private int getRow(ImageButton img_btn) {
         int row = -1;
         for(int i = 0; i < mImageButtons.length; i++) {
             for(int j = 0; j < mImageButtons.length; j++) {
@@ -160,7 +160,7 @@ public class GameController {
         return row;
     }
 
-    public int getColumn(ImageButton img_btn) {
+    private int getColumn(ImageButton img_btn) {
         int col = -1;
         for(int i = 0; i < mImageButtons.length; i++) {
             for(int j = 0; j < mImageButtons.length; j++) {
