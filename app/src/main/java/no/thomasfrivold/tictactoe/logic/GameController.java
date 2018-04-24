@@ -172,4 +172,8 @@ public class GameController {
         return col;
     }
 
+    public ImageButton[][] getmImageButtons() {
+        return mImageButtons;
+    }
+
 }
