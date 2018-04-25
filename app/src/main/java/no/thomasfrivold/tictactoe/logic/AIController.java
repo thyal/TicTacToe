@@ -16,6 +16,12 @@ public class AIController {
         this.difficulty = difficulty;
     }
 
+    private void makeMove(int row, int col) {
+
+        gameController.makeMove(mImageButtons[row][col]);
+    }
+
+    //Easy AI
     public void makeEasyMove() {
         random = new Random();
 
@@ -23,19 +29,16 @@ public class AIController {
         int col = random.nextInt(3);
 
         System.out.println(row + " " + col);
-        if(mImageButtons[row][col].isClickable()) {
+        if(mImageButtons[row][col].isClickable() && mImageButtons[row][col].getTag() == CellSymbol.BLANK) {
             makeMove(row,col);
         } else {
             makeEasyMove();
         }
     }
 
-    private boolean makeMove(int row, int col) {
+    //Hard AI
+    public void makeHardMove() {
 
-        if(mImageButtons[row][col].isClickable()) {
-            gameController.makeMove(mImageButtons[row][col]);
-            return true;
-        }
-        return false;
     }
+
 }
