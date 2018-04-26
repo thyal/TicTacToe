@@ -17,7 +17,6 @@ public class AIController {
     }
 
     private void makeMove(int row, int col) {
-
         gameController.makeMove(mImageButtons[row][col]);
     }
 
@@ -28,11 +27,9 @@ public class AIController {
         int row = random.nextInt(3);
         int col = random.nextInt(3);
 
-        System.out.println(row + " " + col);
-        if(mImageButtons[row][col].isClickable() && mImageButtons[row][col].getTag() == CellSymbol.BLANK) {
-            makeMove(row,col);
-        } else {
-            makeEasyMove();
+        while(!mImageButtons[row][col].isClickable()) {
+            row = random.nextInt(3);
+            col = random.nextInt(3);
         }
     }
 

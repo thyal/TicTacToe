@@ -44,10 +44,15 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
         btnLeaderboard.setOnClickListener(this);
     }
 
-    private void showDialog() {
+    private void showSinglePlayerDialog() {
+        SinglePlayerDialogFragment singlePlayerDialogFragment = new SinglePlayerDialogFragment();
+        singlePlayerDialogFragment.show(getFragmentManager(), "names");
+    }
+
+    private void showTwoPlayerDialog() {
         //Dialog
-        NameInputDialogFragment nameInputDialogFragment = new NameInputDialogFragment();
-        nameInputDialogFragment.show(getFragmentManager(), "names");
+        TwoPlayerDialogFragment twoPlayerDialogFragment = new TwoPlayerDialogFragment();
+        twoPlayerDialogFragment.show(getFragmentManager(), "names");
     }
 
 
@@ -61,16 +66,11 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
         switch(viewId) {
             case R.id.btn_singleplayer:
                 Log.d(TAG, "onClick: singleplayer");
-                SingleplayerFragment singleplayerFragment = new SingleplayerFragment();
-                getFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container, singleplayerFragment)
-                        .addToBackStack(null)
-                        .commit();
+                showSinglePlayerDialog();
                 break;
             case R.id.btn_twoplayer:
                 Log.d(TAG, "onClick: twoplayer");
-                showDialog();
+                showTwoPlayerDialog();
                 break;
             case R.id.btn_leaderboard:
                 Log.d(TAG, "onClick: leaderboard");
