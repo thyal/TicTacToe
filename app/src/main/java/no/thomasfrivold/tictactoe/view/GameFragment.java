@@ -38,6 +38,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     private CellSymbol mStartingPlayer;
     private int image;
     private boolean isSinglePlayer;
+    private boolean isGameFinished = false;
 
     public GameFragment() {
         // Required empty public constructor
@@ -122,13 +123,17 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                 if(viewId == img_btn.getId()) {
                     makeMove(img_btn);
                     if(isSinglePlayer) {
-                        makeAiMove();
+                        if(!isGameFinished) {
+                            makeMove(makeAiMove());
+                        }
+
                     }
                 }
             }
 
         }
         if(viewId == reset_board.getId()) {
+            isGameFinished = false;
             gameController.resetBoard();
         }
     }
@@ -141,6 +146,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            isGameFinished = true;
         }
         if(result != CellSymbol.BLANK && result != null) {
             Context context = getActivity().getApplicationContext();
@@ -148,11 +154,12 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            isGameFinished = true;
         }
     }
 
-    public void makeAiMove() {
-        aiController.makeEasyMove();
+    public ImageButton makeAiMove() {
+        return aiController.makeEasyMove();
     }
 
 }

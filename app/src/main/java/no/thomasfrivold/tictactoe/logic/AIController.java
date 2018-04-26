@@ -21,16 +21,20 @@ public class AIController {
     }
 
     //Easy AI
-    public void makeEasyMove() {
+    public ImageButton makeEasyMove() {
+
+        ImageButton[][] latestButtons = gameController.getmImageButtons();
+
         random = new Random();
 
         int row = random.nextInt(3);
         int col = random.nextInt(3);
 
-        while(!mImageButtons[row][col].isClickable()) {
-            row = random.nextInt(3);
-            col = random.nextInt(3);
+        while(latestButtons[row][col].getTag() != CellSymbol.BLANK) {
+                row = random.nextInt(3);
+                col = random.nextInt(3);
         }
+        return latestButtons[row][col];
     }
 
     //Hard AI
