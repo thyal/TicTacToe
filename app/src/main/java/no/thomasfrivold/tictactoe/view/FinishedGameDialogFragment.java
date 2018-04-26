@@ -27,9 +27,13 @@ public class FinishedGameDialogFragment extends DialogFragment {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.fragment_finished_game_dialog, null))
+        View dialogContent = inflater.inflate(R.layout.fragment_finished_game_dialog, null);
+        builder.setView(dialogContent);
+        String winner = getArguments().getString("winner");
+        TextView textView = dialogContent.findViewById(R.id.txtv_winner);
+        textView.setText(winner + " wins the game");
                 // Add action buttons
-                .setPositiveButton("Go to leaderboard", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Go to leaderboard", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         ((GameActivity)getActivity()).goToLeaderboard();

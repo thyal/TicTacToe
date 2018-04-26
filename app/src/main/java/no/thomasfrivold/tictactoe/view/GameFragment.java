@@ -151,13 +151,16 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         if(result == CellSymbol.BLANK) {
             FinishedGameDialogFragment finishedGameDialogFragment = new FinishedGameDialogFragment();
             Bundle bundle = new Bundle();
-            bundle.putString("winner", "dwadawdw");
+            bundle.putString("winner", result.toString());
             finishedGameDialogFragment.setArguments(bundle);
             finishedGameDialogFragment.show(getFragmentManager(),null);
             isGameFinished = true;
         }
         if(result != CellSymbol.BLANK && result != null) {
             FinishedGameDialogFragment finishedGameDialogFragment = new FinishedGameDialogFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("winner", result.toString());
+            finishedGameDialogFragment.setArguments(bundle);
             finishedGameDialogFragment.show(getFragmentManager(),null);
             isGameFinished = true;
         }
