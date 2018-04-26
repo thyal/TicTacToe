@@ -1,17 +1,17 @@
 package no.thomasfrivold.tictactoe.view;
 
 
-import android.content.Context;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import no.thomasfrivold.tictactoe.R;
 import no.thomasfrivold.tictactoe.data.Player;
@@ -29,6 +29,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     private Player playerTwo;
     private GameController gameController;
     private AIController aiController;
+    private Chronometer chronometer;
 
     private ImageButton reset_board,img_btn_01,img_btn_02,img_btn_03,
                         img_btn_11,img_btn_12,img_btn_13,
@@ -112,6 +113,10 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                 img_btn.setTag(CellSymbol.BLANK);
             }
         }
+
+        //Chronometer
+        chronometer = v.findViewById(R.id.chronometer);
+        chronometer.start();
     }
 
     @Override
@@ -135,25 +140,25 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         if(viewId == reset_board.getId()) {
             isGameFinished = false;
             gameController.resetBoard();
+            //Restart chronometer. Set base time to NOW.
+            chronometer.setBase(SystemClock.elapsedRealtime());
+            chronometer.start();
         }
     }
 
     private void makeMove(ImageButton img_btn) {
         CellSymbol result = gameController.makeMove(img_btn);
         if(result == CellSymbol.BLANK) {
-            Context context = getActivity().getApplicationContext();
-            CharSequence text = "The game ended in DRAW.";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+            FinishedGameDialogFragment finishedGameDialogFragment = new FinishedGameDialogFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("winner", "dwadawdw");
+            finishedGameDialogFragment.setArguments(bundle);
+            finishedGameDialogFragment.show(getFragmentManager(),null);
             isGameFinished = true;
         }
         if(result != CellSymbol.BLANK && result != null) {
-            Context context = getActivity().getApplicationContext();
-            CharSequence text = result + " Won the game";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
+            FinishedGameDialogFragment finishedGameDialogFragment = new FinishedGameDialogFragment();
+            finishedGameDialogFragment.show(getFragmentManager(),null);
             isGameFinished = true;
         }
     }

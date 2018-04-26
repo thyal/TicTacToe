@@ -33,7 +33,7 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
     }
 
-    void doPositiveClick(String playerOne, String playerTwo) {
+    public void doPositiveClick(String playerOne, String playerTwo) {
         //Log.d(TAG, playerOne + " " + playerTwo);
         Bundle bundle = new Bundle();
         bundle.putString("playerOne", playerOne);
@@ -49,4 +49,15 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
 }
 
+    public void goToLeaderboard() {
+        LeaderboardFragment leaderboardFragment = new LeaderboardFragment();
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.container, leaderboardFragment, null)
+                .commit();
+    }
+
+    public void playAgain() {
+    }
 }
