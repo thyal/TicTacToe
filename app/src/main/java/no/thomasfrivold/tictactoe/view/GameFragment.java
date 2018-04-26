@@ -138,11 +138,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
 
         }
         if(viewId == reset_board.getId()) {
-            isGameFinished = false;
-            gameController.resetBoard();
-            //Restart chronometer. Set base time to NOW.
-            chronometer.setBase(SystemClock.elapsedRealtime());
-            chronometer.start();
+            resetBoard();
         }
     }
 
@@ -154,6 +150,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             bundle.putString("winner", result.toString());
             finishedGameDialogFragment.setArguments(bundle);
             finishedGameDialogFragment.show(getFragmentManager(),null);
+            chronometer.stop();
             isGameFinished = true;
         }
         if(result != CellSymbol.BLANK && result != null) {
@@ -162,8 +159,17 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             bundle.putString("winner", result.toString());
             finishedGameDialogFragment.setArguments(bundle);
             finishedGameDialogFragment.show(getFragmentManager(),null);
+            chronometer.stop();
             isGameFinished = true;
         }
+    }
+
+    public void resetBoard() {
+        isGameFinished = false;
+        gameController.resetBoard();
+        //Restart chronometer. Set base time to NOW.
+        chronometer.setBase(SystemClock.elapsedRealtime());
+        chronometer.start();
     }
 
     public ImageButton makeAiMove() {

@@ -39,7 +39,6 @@ public class AIController {
 
     //Hard AI
     public void makeHardMove() {
-
     }
 
 }
