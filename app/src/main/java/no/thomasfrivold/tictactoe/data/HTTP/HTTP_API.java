@@ -24,9 +24,6 @@ public class HTTP_API {
     }
 
 
-    /**
-     * Http get call on async thread to url to find a bitmap to set in the correct fragment
-     */
     private class SetImageAsync extends AsyncTask<String, Void, Bitmap> {
 
         Bitmap img;

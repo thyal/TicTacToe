@@ -1,13 +1,21 @@
 package no.thomasfrivold.tictactoe.data.entities;
 
-public class Player {
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 
+@Entity
+public class Player {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+    @ColumnInfo(name = "name")
     private String name;
+    @ColumnInfo(name = "wins")
     private int wins;
 
-    public Player(String name, int wins) {
+    public Player(String name) {
         this.name = name;
-        this.wins = wins;
+        this.wins = 1;
     }
 
     public String getName() {
