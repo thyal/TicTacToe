@@ -62,8 +62,8 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             this.isSinglePlayer = false;
         }
 
-        playerOne = new Player(playerOneName, 0);
-        playerTwo = new Player(playerTwoName, 0);
+        playerOne = new Player(playerOneName);
+        playerTwo = new Player(playerTwoName);
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_game, container, false);
         initWidgets(v);
