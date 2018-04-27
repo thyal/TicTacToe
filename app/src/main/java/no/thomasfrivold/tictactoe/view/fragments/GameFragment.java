@@ -157,15 +157,24 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         }
         if(result != CellSymbol.BLANK && result != null) {
             FinishedGameDialogFragment finishedGameDialogFragment = new FinishedGameDialogFragment();
+            DatabaseHandler db = new DatabaseHandler();
             Bundle bundle = new Bundle();
-            bundle.putString("winner", result.toString());
+
+            //See who is the winner, and add the winner to the db table. If the bot wins, we will not
+            //add that.
+            if(result == CellSymbol.CROSS) {
+                bundle.putString("winner", playerOne.getName());
+                db.addWinToPlayer(getContext(), playerOne.getName());
+            } else {
+                bundle.putString("winner", playerTwo.getName());
+                if(!playerTwo.getName().equals("TTTBot")) {
+                    db.addWinToPlayer(getContext(), playerTwo.getName());
+                }
+            }
             finishedGameDialogFragment.setArguments(bundle);
             finishedGameDialogFragment.show(getFragmentManager(),null);
             chronometer.stop();
             isGameFinished = true;
-
-            DatabaseHandler db = new DatabaseHandler();
-            db.addWinToPlayer(getContext(), playerOne.getName());
         }
     }
 
