@@ -30,6 +30,7 @@ public class FinishedGameDialogFragment extends DialogFragment {
         View dialogContent = inflater.inflate(R.layout.fragment_finished_game_dialog, null);
         builder.setView(dialogContent);
         String winner = getArguments().getString("winner");
+
         TextView textView = dialogContent.findViewById(R.id.txtv_winner);
         textView.setText(winner + " wins the game");
                 // Add action buttons

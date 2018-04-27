@@ -1,6 +1,7 @@
 package no.thomasfrivold.tictactoe.view;
 
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -8,8 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import no.thomasfrivold.tictactoe.R;
+import no.thomasfrivold.tictactoe.data.HTTP_API;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +22,7 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
 
     private static final String TAG = "MenuScreenFragment";
 
-    private Button btnSinglePlayer, btnTwoPlayer, btnLeaderboard;
+    private Button btnSinglePlayer, btnTwoPlayer, btnLeaderboard, btnImage;
 
     public MenuScreenFragment() {
         // Required empty public constructor
@@ -38,11 +42,14 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
         btnSinglePlayer = v.findViewById(R.id.btn_singleplayer);
         btnTwoPlayer = v.findViewById(R.id.btn_twoplayer);
         btnLeaderboard = v.findViewById(R.id.btn_leaderboard);
+        btnImage = v.findViewById(R.id.btn_image);
 
         btnSinglePlayer.setOnClickListener(this);
         btnTwoPlayer.setOnClickListener(this);
         btnLeaderboard.setOnClickListener(this);
-    }
+        btnImage.setOnClickListener(this);
+
+}
 
     private void showSinglePlayerDialog() {
         SinglePlayerDialogFragment singlePlayerDialogFragment = new SinglePlayerDialogFragment();
@@ -81,6 +88,13 @@ public class MenuScreenFragment extends Fragment implements View.OnClickListener
                         .addToBackStack(null)
                         .commit();
                 break;
+            case R.id.btn_image:
+                ImageFragment imageFragment = new ImageFragment();
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, imageFragment)
+                        .addToBackStack(null)
+                        .commit();
         }
 
     }

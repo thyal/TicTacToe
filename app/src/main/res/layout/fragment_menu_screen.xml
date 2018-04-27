@@ -53,4 +53,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.600" />
 
+    <Button
+        android:id="@+id/btn_image"
+        style="@style/primaryText"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginEnd="92dp"
+        android:text="Image of the day"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.750" />
+
 </android.support.constraint.ConstraintLayout>
