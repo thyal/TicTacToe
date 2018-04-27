@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/cl_menu_screen"
     android:background="@drawable/blackboard_bg_xxhdpi"
-    tools:context=".view.MenuScreenFragment">
+    tools:context=".view.fragments.MenuScreenFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

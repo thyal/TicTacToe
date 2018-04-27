@@ -1,16 +1,14 @@
-package no.thomasfrivold.tictactoe.data;
+package no.thomasfrivold.tictactoe.data.HTTP;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.ImageView;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-import no.thomasfrivold.tictactoe.view.ImageFragment;
+import no.thomasfrivold.tictactoe.view.fragments.ImageFragment;
 
 public class HTTP_API {
 

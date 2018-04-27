@@ -1,4 +1,4 @@
-package no.thomasfrivold.tictactoe.data;
+package no.thomasfrivold.tictactoe.data.entities;
 
 public class Player {
 

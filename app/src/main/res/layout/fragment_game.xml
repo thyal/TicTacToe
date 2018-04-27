@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:id="@+id/game_board"
     android:background="@drawable/blackboard_bg_xxhdpi"
-    tools:context=".view.GameFragment">
+    tools:context=".view.fragments.GameFragment">
 
     <Chronometer
         android:id="@+id/chronometer"

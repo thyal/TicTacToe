@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import no.thomasfrivold.tictactoe.R;
+import no.thomasfrivold.tictactoe.view.fragments.GameFragment;
+import no.thomasfrivold.tictactoe.view.fragments.LeaderboardFragment;
+import no.thomasfrivold.tictactoe.view.fragments.MenuScreenFragment;
 
 public class GameActivity extends AppCompatActivity {
 

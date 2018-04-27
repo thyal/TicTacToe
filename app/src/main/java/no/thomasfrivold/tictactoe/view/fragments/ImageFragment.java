@@ -1,9 +1,7 @@
-package no.thomasfrivold.tictactoe.view;
+package no.thomasfrivold.tictactoe.view.fragments;
 
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,10 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.io.InputStream;
-
 import no.thomasfrivold.tictactoe.R;
-import no.thomasfrivold.tictactoe.data.HTTP_API;
+import no.thomasfrivold.tictactoe.data.HTTP.HTTP_API;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -1,4 +1,4 @@
-package no.thomasfrivold.tictactoe.view;
+package no.thomasfrivold.tictactoe.view.dialogs;
 
 
 import android.app.AlertDialog;
@@ -8,14 +8,16 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.TextView;
 
 import no.thomasfrivold.tictactoe.R;
+import no.thomasfrivold.tictactoe.view.GameActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SinglePlayerDialogFragment extends DialogFragment {
+public class FinishedGameDialogFragment extends DialogFragment {
 
 
     @Override
@@ -26,27 +28,25 @@ public class SinglePlayerDialogFragment extends DialogFragment {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.fragment_singleplayer_dialog, null))
+        View dialogContent = inflater.inflate(R.layout.fragment_finished_game_dialog, null);
+        builder.setView(dialogContent);
+        String winner = getArguments().getString("winner");
+
+        TextView textView = dialogContent.findViewById(R.id.txtv_winner);
+        textView.setText(winner + " wins the game");
                 // Add action buttons
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton("Go to leaderboard", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        //Cast to dialog so that findViewById will be available.
-                        Dialog f = (Dialog) dialog;
-
-                        EditText one = f.findViewById(R.id.edt_singleplayer);
-
-                        String playerOne = one.getText().toString();
-                        String playerTwo = "TTTBot";
-
-                        ((GameActivity)getActivity()).doPositiveClick(playerOne, playerTwo);
+                        ((GameActivity)getActivity()).goToLeaderboard();
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Play again", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        SinglePlayerDialogFragment.this.getDialog().cancel();
+                        FinishedGameDialogFragment.this.getDialog().cancel();
                     }
                 });
         return builder.create();
     }
 }
+

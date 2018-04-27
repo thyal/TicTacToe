@@ -1,4 +1,4 @@
-package no.thomasfrivold.tictactoe.view;
+package no.thomasfrivold.tictactoe.view.dialogs;
 
 
 import android.app.AlertDialog;
@@ -11,11 +11,12 @@ import android.view.LayoutInflater;
 import android.widget.EditText;
 
 import no.thomasfrivold.tictactoe.R;
+import no.thomasfrivold.tictactoe.view.GameActivity;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TwoPlayerDialogFragment extends DialogFragment {
+public class SinglePlayerDialogFragment extends DialogFragment {
 
 
     @Override
@@ -26,7 +27,7 @@ public class TwoPlayerDialogFragment extends DialogFragment {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.fragment_two_player_dialog, null))
+        builder.setView(inflater.inflate(R.layout.fragment_singleplayer_dialog, null))
                 // Add action buttons
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
@@ -34,18 +35,17 @@ public class TwoPlayerDialogFragment extends DialogFragment {
                         //Cast to dialog so that findViewById will be available.
                         Dialog f = (Dialog) dialog;
 
-                        EditText one = f.findViewById(R.id.player_one);
-                        EditText two = f.findViewById(R.id.player_two);
+                        EditText one = f.findViewById(R.id.edt_singleplayer);
 
                         String playerOne = one.getText().toString();
-                        String playerTwo = two.getText().toString();
+                        String playerTwo = "TTTBot";
 
                         ((GameActivity)getActivity()).doPositiveClick(playerOne, playerTwo);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        TwoPlayerDialogFragment.this.getDialog().cancel();
+                        SinglePlayerDialogFragment.this.getDialog().cancel();
                     }
                 });
         return builder.create();

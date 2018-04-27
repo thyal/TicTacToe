@@ -4,6 +4,8 @@ import android.widget.ImageButton;
 
 import java.util.Random;
 
+import no.thomasfrivold.tictactoe.data.enums.CellSymbol;
+
 public class AIController {
     private GameController gameController;
     private ImageButton [][] mImageButtons;

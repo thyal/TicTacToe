@@ -1,4 +1,4 @@
-package no.thomasfrivold.tictactoe.view;
+package no.thomasfrivold.tictactoe.view.fragments;
 
 
 import android.os.Bundle;
@@ -14,10 +14,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import no.thomasfrivold.tictactoe.R;
-import no.thomasfrivold.tictactoe.data.Player;
+import no.thomasfrivold.tictactoe.data.entities.Player;
 import no.thomasfrivold.tictactoe.logic.AIController;
-import no.thomasfrivold.tictactoe.logic.CellSymbol;
+import no.thomasfrivold.tictactoe.data.enums.CellSymbol;
 import no.thomasfrivold.tictactoe.logic.GameController;
+import no.thomasfrivold.tictactoe.view.dialogs.FinishedGameDialogFragment;
 
 /**
  * A simple {@link Fragment} subclass.

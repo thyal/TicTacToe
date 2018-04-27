@@ -1,4 +1,4 @@
-package no.thomasfrivold.tictactoe.view;
+package no.thomasfrivold.tictactoe.view.fragments;
 
 
 import android.os.Bundle;

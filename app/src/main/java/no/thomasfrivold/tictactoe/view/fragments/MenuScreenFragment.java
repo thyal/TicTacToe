@@ -1,7 +1,6 @@
-package no.thomasfrivold.tictactoe.view;
+package no.thomasfrivold.tictactoe.view.fragments;
 
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -9,11 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import no.thomasfrivold.tictactoe.R;
-import no.thomasfrivold.tictactoe.data.HTTP_API;
+import no.thomasfrivold.tictactoe.view.dialogs.SinglePlayerDialogFragment;
+import no.thomasfrivold.tictactoe.view.dialogs.TwoPlayerDialogFragment;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -3,6 +3,7 @@ package no.thomasfrivold.tictactoe.logic;
 import android.widget.ImageButton;
 
 import no.thomasfrivold.tictactoe.R;
+import no.thomasfrivold.tictactoe.data.enums.CellSymbol;
 
 public class GameController {
 
