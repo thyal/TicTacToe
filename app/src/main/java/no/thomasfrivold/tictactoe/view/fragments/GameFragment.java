@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import no.thomasfrivold.tictactoe.R;
+import no.thomasfrivold.tictactoe.data.database.DatabaseHandler;
 import no.thomasfrivold.tictactoe.data.entities.Player;
 import no.thomasfrivold.tictactoe.logic.AIController;
 import no.thomasfrivold.tictactoe.data.enums.CellSymbol;
@@ -162,6 +163,9 @@ public class GameFragment extends Fragment implements View.OnClickListener {
             finishedGameDialogFragment.show(getFragmentManager(),null);
             chronometer.stop();
             isGameFinished = true;
+
+            DatabaseHandler db = new DatabaseHandler();
+            db.addWinToPlayer(getContext(), playerOne.getName());
         }
     }
 

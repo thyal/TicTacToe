@@ -12,8 +12,14 @@ import no.thomasfrivold.tictactoe.data.entities.Player;
 @Dao
 public interface PlayerDAO {
 
-    @Query("SELECT * FROM player")
+    @Query("SELECT * FROM player ORDER BY wins DESC")
     List<Player> getAll();
+
+    @Query("SELECT id FROM player WHERE name LIKE :name")
+    int getIdFromName(String name);
+
+    @Query("UPDATE player SET wins = (wins+1)  WHERE id = :id")
+    int updateWins(int id);
 
     @Insert
     void insertAll(Player...players);

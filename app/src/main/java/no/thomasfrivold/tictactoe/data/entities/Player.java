@@ -41,4 +41,9 @@ public class Player {
     public void setWins(int wins) {
         this.wins = wins;
     }
+
+    public String getWinsString() {
+        String winsString = Integer.toString(wins);
+        return winsString;
+    }
 }
