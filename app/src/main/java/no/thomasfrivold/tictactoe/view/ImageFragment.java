@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.io.InputStream;
@@ -20,10 +21,11 @@ import no.thomasfrivold.tictactoe.data.HTTP_API;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ImageFragment extends Fragment {
+public class ImageFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "IMAGEFRAGMENT";
     private ImageView imageView;
+    private Button btn_reload;
 
     public ImageFragment() {
         // Required empty public constructor
@@ -41,7 +43,15 @@ public class ImageFragment extends Fragment {
 
     private void initWidgets(View v) {
         imageView = v.findViewById(R.id.imageView);
-        new HTTP_API(this, "https://picsum.photos/200?random");
+        btn_reload = v.findViewById(R.id.btn_reload_img);
+
+        btn_reload.setOnClickListener(this);
+
+        loadImg();
+    }
+
+    public void loadImg() {
+        new HTTP_API(this, "https://picsum.photos/300?random");
     }
 
 
@@ -53,5 +63,14 @@ public class ImageFragment extends Fragment {
         Log.d(TAG, "setImageBitmap: " + imageBitmap.toString());
 
         this.imageView.setImageBitmap(imageBitmap);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int viewId = v.getId();
+
+        if(viewId == R.id.btn_reload_img) {
+            loadImg();
+        }
     }
 }
