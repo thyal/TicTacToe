@@ -14,7 +14,7 @@ import java.util.List;
 import no.thomasfrivold.tictactoe.R;
 import no.thomasfrivold.tictactoe.data.database.DatabaseHandler;
 import no.thomasfrivold.tictactoe.data.entities.Player;
-import no.thomasfrivold.tictactoe.view.PlayerAdapter;
+import no.thomasfrivold.tictactoe.data.database.PlayerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.

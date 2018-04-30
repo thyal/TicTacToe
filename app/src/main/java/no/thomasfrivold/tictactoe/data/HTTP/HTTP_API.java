@@ -38,22 +38,14 @@ public class HTTP_API {
         }
 
         private Bitmap getImage(String imageUrl) {
-
-            //  https://stackoverflow.com/questions/11950042/android-how-to-make-a-http-request-to-get-image-link-for-imageview
-
             try {
-
                 img = BitmapFactory.decodeStream((InputStream) new URL(imageUrl).getContent());
 
                 return img;
 
             } catch (IOException e) {
-
                 e.printStackTrace();
-
             }
-
-
             return null;
         }
 

@@ -43,7 +43,7 @@ public class FinishedGameDialogFragment extends DialogFragment {
                 })
                 .setNegativeButton("Play again", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        FinishedGameDialogFragment.this.getDialog().cancel();
+                        ((GameActivity)getActivity()).goBack();
                     }
                 });
         return builder.create();

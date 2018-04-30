@@ -42,6 +42,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
     private int image;
     private boolean isSinglePlayer;
     private boolean isGameFinished = false;
+    private int difficulty;
 
     public GameFragment() {
         // Required empty public constructor
@@ -56,6 +57,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
 
         String playerOneName = this.getArguments().getString("playerOne");
         String playerTwoName = this.getArguments().getString("playerTwo");
+        difficulty = this.getArguments().getInt("difficulty");
 
         if(playerTwoName.equals("TTTBot")) {
             this.isSinglePlayer = true;
@@ -131,7 +133,7 @@ public class GameFragment extends Fragment implements View.OnClickListener {
                     makeMove(img_btn);
                     if(isSinglePlayer) {
                         if(!isGameFinished) {
-                            makeMove(makeAiMove());
+                            makeMove(makeAiMove(difficulty));
                         }
 
                     }
@@ -186,7 +188,10 @@ public class GameFragment extends Fragment implements View.OnClickListener {
         chronometer.start();
     }
 
-    public ImageButton makeAiMove() {
+    public ImageButton makeAiMove(int difficulty) {
+        if(difficulty == 1) {
+            return aiController.makeHardMove();
+        }
         return aiController.makeEasyMove();
     }
 

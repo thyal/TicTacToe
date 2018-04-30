@@ -41,7 +41,7 @@ public class TwoPlayerDialogFragment extends DialogFragment {
                         String playerOne = one.getText().toString();
                         String playerTwo = two.getText().toString();
 
-                        ((GameActivity)getActivity()).doPositiveClick(playerOne, playerTwo);
+                        ((GameActivity)getActivity()).doPositiveClick(playerOne, playerTwo, 0);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

@@ -9,7 +9,7 @@ import no.thomasfrivold.tictactoe.data.DAO.PlayerDAO;
 import no.thomasfrivold.tictactoe.data.entities.Player;
 
 @Database(entities = {Player.class}, version = 1)
-public abstract     class AppDatabase extends RoomDatabase {
+public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
 

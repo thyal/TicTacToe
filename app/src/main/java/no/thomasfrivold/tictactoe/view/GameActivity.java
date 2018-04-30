@@ -36,12 +36,12 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void doPositiveClick(String playerOne, String playerTwo) {
+    public void doPositiveClick(String playerOne, String playerTwo, int difficulty) {
         //Log.d(TAG, playerOne + " " + playerTwo);
         Bundle bundle = new Bundle();
         bundle.putString("playerOne", playerOne);
         bundle.putString("playerTwo", playerTwo);
-
+        bundle.putInt("difficulty", difficulty);
         GameFragment gameFragment = new GameFragment();
         gameFragment.setArguments(bundle);
         fragmentManager = getSupportFragmentManager();
@@ -61,6 +61,12 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void playAgain() {
+    public void goBack() {
+        MenuScreenFragment menuScreenFragment = new MenuScreenFragment();
+        fragmentManager = getSupportFragmentManager();
+        fragmentManager
+                .beginTransaction()
+                .add(R.id.container, menuScreenFragment, null)
+                .commit();
     }
 }

@@ -40,7 +40,82 @@ public class AIController {
     }
 
     //Hard AI
-    public void makeHardMove() {
+    //It basically checks if player has two in a row somewhere.
+    public ImageButton makeHardMove() {
+
+            for(int i = 0; i < mImageButtons.length; i++) {
+                if (checkDiagonally() == 2) {
+                    if (mImageButtons[i][i].getTag() == CellSymbol.BLANK) {
+                        return mImageButtons[i][i];
+                    }
+                } else if (checkAntiDiagonally() == 2) {
+                    if (mImageButtons[i][mImageButtons.length - i - 1].getTag() == CellSymbol.BLANK) {
+                        return mImageButtons[i][mImageButtons.length - i - 1];
+                    }
+                }
+                else {
+                    if(checkRows(i) == 2) {
+                        for(int j = 0; j < mImageButtons.length; j++) {
+                            if(mImageButtons[j][i].getTag() == CellSymbol.BLANK) {
+                                return mImageButtons[j][i];
+                            }
+                        }
+                    }
+                    if(checkCols(i) == 2) {
+                        for(int j = 0; j < mImageButtons.length; j++) {
+                            if(mImageButtons[i][j].getTag() == CellSymbol.BLANK) {
+                                return mImageButtons[i][j];
+                            }
+                        }
+                    }
+                }
+            }
+            return makeEasyMove();
     }
+
+
+
+
+
+    private int checkRows(int col) {
+        int symbolsInARow = 0;
+        for(int i = 0; i < mImageButtons.length; i++) {
+            if(mImageButtons[i][col].getTag() == CellSymbol.CROSS) {
+                symbolsInARow++;
+            }
+        }
+        return symbolsInARow;
+    }
+
+    private int checkCols(int row) {
+        int symbolsInARow = 0;
+        for(int i = 0; i < mImageButtons[0].length; i++) {
+            if(mImageButtons[row][i].getTag() == CellSymbol.CROSS) {
+                symbolsInARow++;
+            }
+        }
+        return symbolsInARow;
+    }
+
+    private int checkDiagonally() {
+        int symbolsInARow = 0;
+        for(int i = 0; i < mImageButtons.length; i++) {
+            if(mImageButtons[i][i].getTag() == CellSymbol.CROSS) {
+                symbolsInARow++;
+            }
+        }
+        return symbolsInARow;
+    }
+
+    private int checkAntiDiagonally() {
+        int symbolsInARow = 0;
+        for(int i = 0; i < mImageButtons.length; i++) {
+            if(mImageButtons[i][mImageButtons.length - i - 1].getTag() == CellSymbol.CROSS) {
+                symbolsInARow++;
+            }
+        }
+        return symbolsInARow;
+    }
+
 
 }

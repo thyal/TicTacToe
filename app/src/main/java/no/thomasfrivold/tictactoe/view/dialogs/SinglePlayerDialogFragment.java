@@ -29,7 +29,7 @@ public class SinglePlayerDialogFragment extends DialogFragment {
         // Pass null as the parent view because its going in the dialog layout
         builder.setView(inflater.inflate(R.layout.fragment_singleplayer_dialog, null))
                 // Add action buttons
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                .setPositiveButton("HARD AI", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         //Cast to dialog so that findViewById will be available.
@@ -39,13 +39,23 @@ public class SinglePlayerDialogFragment extends DialogFragment {
 
                         String playerOne = one.getText().toString();
                         String playerTwo = "TTTBot";
+                        int difficulty = 1;
 
-                        ((GameActivity)getActivity()).doPositiveClick(playerOne, playerTwo);
+                        ((GameActivity)getActivity()).doPositiveClick(playerOne, playerTwo, difficulty);
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton("EASY AI", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        SinglePlayerDialogFragment.this.getDialog().cancel();
+                        //Cast to dialog so that findViewById will be available.
+                        Dialog f = (Dialog) dialog;
+
+                        EditText one = f.findViewById(R.id.edt_singleplayer);
+
+                        String playerOne = one.getText().toString();
+                        String playerTwo = "TTTBot";
+                        int difficulty = 0;
+
+                        ((GameActivity)getActivity()).doPositiveClick(playerOne, playerTwo, difficulty);
                     }
                 });
         return builder.create();
